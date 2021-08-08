@@ -65,26 +65,89 @@ package editor.cn;
 // Related Topics 设计 哈希表 链表 双向链表 
 // 👍 415 👎 0
 
-class LFU 缓存{
-	public static void main(String[] args) {
-		
-	}
-	
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
+class LFU缓存 {
+    public static void main(String[] args) {
+
+    }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class LFUCache {
+    class LFUCache {
 
-    public LFUCache(int capacity) {
+        private PriorityQueue<Node> queue;
+        private HashMap<Integer, Node> map;
+        private int cap;
 
+        int time = 0;
+
+        public LFUCache(int capacity) {
+            this.cap = capacity;
+            if (capacity > 0) {
+                queue = new PriorityQueue<>();
+            }
+            map = new HashMap<>();
+        }
+
+        public int get(int key) {
+            Node node = map.get(key);
+            if (node != null) {
+                node.feq++;
+                node.time = time++;
+                queue.remove(node);
+                queue.offer(node);
+                return node.value;
+            } else {
+                return -1;
+            }
+        }
+
+        public void put(int key, int value) {
+            if (cap == 0) {
+                return;
+            }
+            Node node = map.get(key);
+            if (node != null) {
+                //更新
+                node.value = value;
+                node.feq++;
+                node.time = time++;
+                queue.remove(node);
+                queue.offer(node);
+            } else {
+                if (map.size() == cap) {
+                    map.remove(queue.poll().key);
+                }
+                //插入
+                Node newNode = new Node(key, value, time++);
+                map.put(key, newNode);
+                queue.offer(newNode);
+            }
+        }
+
+        class Node implements Comparable<Node> {
+            private int key;
+            private int value;
+            private int feq = 1;
+            private int time;
+
+            public Node() {
+            }
+
+            public Node(int key, int value, int time) {
+                this.key = key;
+                this.value = value;
+                this.time = time;
+            }
+
+            @Override
+            public int compareTo(Node o) {
+                int minus = this.feq - o.feq;
+                return minus == 0 ? (this.time - o.time) : minus;
+            }
+        }
     }
-    
-    public int get(int key) {
-
-    }
-    
-    public void put(int key, int value) {
-
-    }
-}
 
 /**
  * Your LFUCache object will be instantiated and called as such:

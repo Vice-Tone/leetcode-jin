@@ -69,9 +69,9 @@ public class Lock_ABC {
 
     public static void main(String[] args) throws InterruptedException {
         new Thread(new ThreadA()).start();
-        Thread.sleep(10);
+//        Thread.sleep(10);
         new Thread(new ThreadB()).start();
-        Thread.sleep(10);
+//        Thread.sleep(10);
         new Thread(new ThreadC()).start();
 
     }

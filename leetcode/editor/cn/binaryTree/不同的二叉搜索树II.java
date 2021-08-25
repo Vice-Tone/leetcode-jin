@@ -81,6 +81,7 @@ class 不同的二叉搜索树II {
     }
 
     class Solution {
+
         public List<TreeNode> generateTrees(int n) {
             if (n == 0) {
                 return new LinkedList<TreeNode>();

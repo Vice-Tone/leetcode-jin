@@ -88,7 +88,6 @@ class 二叉树的最小深度 {
             queue.offer(root);
             while (!queue.isEmpty()) {
                 int n = queue.size();
-
                 for (int i = 0; i < n; i++) {
                     TreeNode cur = queue.poll();
                     if (cur.left == null && cur.right == null) {

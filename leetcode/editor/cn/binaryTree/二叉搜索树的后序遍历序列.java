@@ -38,6 +38,7 @@ class 二叉搜索树的后序遍历序列 {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public boolean verifyPostorder(int[] postorder) {
             return verify(postorder, 0, postorder.length - 1);
         }

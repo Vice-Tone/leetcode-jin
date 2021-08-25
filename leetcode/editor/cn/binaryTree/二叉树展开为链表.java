@@ -81,11 +81,14 @@ class 二叉树展开为链表 {
             TreeNode left = root.left;
             TreeNode right = root.right;
             root.left = null;
+            //把左子树接到右边
             root.right = left;
+            //走到最右下
             TreeNode p = root;
             while (p.right != null) {
                 p = p.right;
             }
+            //把原来的右子树接上
             p.right = right;
         }
     }

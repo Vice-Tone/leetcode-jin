@@ -60,14 +60,14 @@ class 二叉树的序列化与反序列化 {
         String SEP = ",";
         String NULL_TREE = "#";
 
-        // Encodes a tree to a single string.
+        // 序列化
         public String serialize(TreeNode root) {
             StringBuilder sb = new StringBuilder();
             serializeTree(root, sb);
             return sb.toString();
         }
 
-        // Decodes your encoded data to tree.
+        // 反序列化
         public TreeNode deserialize(String data) {
             LinkedList<String> nodes = new LinkedList<>();
             for (String value : data.split(SEP)) {
@@ -104,11 +104,6 @@ class 二叉树的序列化与反序列化 {
 
 
     }
-
-// Your Codec object will be instantiated and called as such:
-// Codec ser = new Codec();
-// Codec deser = new Codec();
-// TreeNode ans = deser.deserialize(ser.serialize(root));
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

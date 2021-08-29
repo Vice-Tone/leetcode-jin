@@ -58,16 +58,13 @@ class 无重复字符的最长子串 {
     class Solution {
         public int lengthOfLongestSubstring(String s) {
             HashMap<Character, Integer> window = new HashMap<>();
-
             int left = 0;
             int right = 0;
             int res = 0;
-
             while (right < s.length()) {
                 char c = s.charAt(right);
                 right++;
                 window.put(c, window.getOrDefault(c, 0) + 1);
-
                 //window中出现了重复字符
                 while (window.get(c) > 1) {
                     char d = s.charAt(left);

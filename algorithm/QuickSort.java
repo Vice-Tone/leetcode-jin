@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 /**
  * @author ：jin
- * @description:快速排序
+ * @description: 快速排序
  * @date ：Created in 2021/3/2 14:17
  */
 public class QuickSort {

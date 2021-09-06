@@ -70,6 +70,7 @@ class 下一个排列 {
                 //交换
                 swap(nums, i, j);
             }
+            //可证明区间 [i+1,n) 必为降序
             //将j后的数重新调整至升序
             reverse(nums, i + 1);
         }

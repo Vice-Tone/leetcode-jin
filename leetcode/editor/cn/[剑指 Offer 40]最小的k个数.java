@@ -35,12 +35,22 @@ class 最小的k个数 {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
+        //TopK问题 (分为TopK小、TopK大)有两种解法，下面以TopK小为例
+        //1.小根堆
+        //  构造一个小根堆，把元素全部offer进去，然后poll弹出K个元素即可
+        //2.大根堆
+        //  构造一个容量为K的大根堆，先offerK个元素，堆顶是当前最大的元素，
+        //  只要后续元素比他小，就弹出堆顶元素，然后offer新元素，这样保证堆里的元素是较小的
+
         public int[] getLeastNumbers(int[] arr, int k) {
             int[] res = new int[k];
             if (k == 0) {
                 return res;
             }
 
+            //PriorityQueue默认升序排列，是一个小根堆
+            //下面这样写是降序排列，是个大根堆
             PriorityQueue<Integer> queue = new PriorityQueue<>((o1, o2) -> o2 - o1);
             for (int i = 0; i < k; i++) {
                 queue.offer(arr[i]);

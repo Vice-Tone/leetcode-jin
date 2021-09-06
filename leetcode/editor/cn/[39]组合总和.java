@@ -83,6 +83,7 @@ class 组合总和 {
                 res.add(new LinkedList<>(track));
                 return;
             }
+            //跟普通dfs不同，不需要对数组循环
             //使用当前pos的数
             if (target - candidates[pos] >= 0) {
                 track.add(candidates[pos]);

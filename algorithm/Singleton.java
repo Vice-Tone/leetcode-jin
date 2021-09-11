@@ -22,4 +22,18 @@ public class Singleton {
         return instance;
     }
 
+    /**
+     * 枚举单例
+     */
+    public enum EnumSingleton {
+        /**
+         *
+         */
+        INSTANCE;
+
+        public EnumSingleton getInstance() {
+            return INSTANCE;
+        }
+    }
+
 }

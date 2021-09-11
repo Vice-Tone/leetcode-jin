@@ -24,7 +24,7 @@ public class BinarySearch {
 //            mid = low + ((high - low) >>> 1);
 //            错误写法（运算符优先级问题）：
 //            mid = low + (high - low) >>> 1;
-            mid = (low + high ) >>> 1;
+            mid = low + (high - low) / 2;
             if (key < arr[mid]) {
                 high = mid - 1;
             } else if (key > arr[mid]) {

@@ -13,6 +13,43 @@ public class QuickSort {
         System.out.println(Arrays.toString(a));
     }
 
+    /**
+     * partition版本
+     * @param nums
+     * @param low
+     * @param high
+     */
+    public void quickSort(int[] nums, int low, int high) {
+        if (low < high) {
+            int pivot = partition(nums, low, high);
+            quickSort(nums, low, pivot - 1);
+            quickSort(nums, pivot + 1, high);
+        }
+    }
+
+    public int partition(int[] nums, int low, int high) {
+        int i, j, index;
+        i = low;
+        j = high;
+        index = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] >= index) {
+                j--;
+            }
+            if (i < j) {
+                nums[i++] = nums[j];
+            }
+            while (i < j && nums[i] <= index) {
+                i++;
+            }
+            if (i < j) {
+                nums[j--] = nums[i];
+            }
+        }
+        nums[i] = index;
+        return i;
+    }
+
     public static void sort(int[] a, int low, int high) {
         if (low > high) {
             return;
@@ -48,36 +85,6 @@ public class QuickSort {
     }
 
 
-    //partiton版本
-    public void quickSort(int[] nums, int low, int high) {
-        if (low < high) {
-            int pivot = partition(nums, low, high);
-            quickSort(nums, low, pivot - 1);
-            quickSort(nums, pivot + 1, high);
-        }
-    }
 
-    public int partition(int[] nums, int low, int high) {
-        int i, j, index;
-        i = low;
-        j = high;
-        index = nums[i];
-        while (i < j) {
-            while (i < j && nums[j] >= index) {
-                j--;
-            }
-            if (i < j) {
-                nums[i++] = nums[j];
-            }
-            while (i < j && nums[i] <= index) {
-                i++;
-            }
-            if (i < j) {
-                nums[j--] = nums[i];
-            }
-        }
-        nums[i] = index;
-        return i;
-    }
 
 }

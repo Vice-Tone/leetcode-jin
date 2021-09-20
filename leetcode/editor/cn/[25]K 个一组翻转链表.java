@@ -110,11 +110,10 @@ class K个一组翻转链表 {
         }
 
         /**
-         * 反转a到b之间的链表
-         *
-         * @param a
-         * @param b
-         * @return
+         * 反转链表中位置a到b的元素
+         * @param a 包括
+         * @param b 不包括
+         * @return 反转后的头节点
          */
         public ListNode reverse(ListNode a, ListNode b) {
             ListNode pre, cur, nxt;

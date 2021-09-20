@@ -34,46 +34,46 @@ package editor.cn;
 import java.util.HashMap;
 import java.util.Stack;
 
-class 去除重复字母{
-	public static void main(String[] args) {
-		
-	}
-	
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String removeDuplicateLetters(String s) {
-        Stack<Character> stk = new Stack<>();
+class 去除重复字母 {
+    public static void main(String[] args) {
 
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
-        }
-        boolean[] inStack = new boolean[256];
-        for (char c : s.toCharArray()) {
-            // 每遍历过一个字符，都将对应的计数减一
-            map.put(c, map.getOrDefault(c, 0) - 1);
-
-            if (inStack[c]) continue;
-
-            while (!stk.isEmpty() && stk.peek() > c) {
-                // 若之后不存在栈顶元素了，则停止 pop
-                if (map.get(stk.peek()) == 0) {
-                    break;
-                }
-                // 若之后还有，则可以 pop
-                inStack[stk.pop()] = false;
-            }
-            stk.push(c);
-            inStack[c] = true;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        while (!stk.empty()) {
-            sb.append(stk.pop());
-        }
-        return sb.reverse().toString();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public String removeDuplicateLetters(String s) {
+            Stack<Character> stk = new Stack<>();
+
+            HashMap<Character, Integer> map = new HashMap<>();
+            for (int i = 0; i < s.length(); i++) {
+                map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+            }
+            boolean[] inStack = new boolean[256];
+            for (char c : s.toCharArray()) {
+                // 每遍历过一个字符，都将对应的计数减一
+                map.put(c, map.getOrDefault(c, 0) - 1);
+
+                if (inStack[c]) continue;
+
+                while (!stk.isEmpty() && stk.peek() > c) {
+                    // 若之后不存在栈顶元素了，则停止 pop
+                    if (map.get(stk.peek()) == 0) {
+                        break;
+                    }
+                    // 若之后还有，则可以 pop
+                    inStack[stk.pop()] = false;
+                }
+                stk.push(c);
+                inStack[c] = true;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            while (!stk.empty()) {
+                sb.append(stk.pop());
+            }
+            return sb.reverse().toString();
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

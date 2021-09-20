@@ -95,7 +95,12 @@ class 两两交换链表中的节点 {
             return res;
         }
 
-        //反转链表中位置a到b的元素
+        /**
+         * 反转链表中位置a到b的元素
+         * @param a 包括
+         * @param b 不包括
+         * @return 反转后的头节点
+         */
         private ListNode reverse(ListNode a, ListNode b) {
             ListNode pre,cur,nxt;
             pre = null;

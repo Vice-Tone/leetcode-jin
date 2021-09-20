@@ -87,8 +87,8 @@ class 合并K个升序链表 {
     class Solution {
         public ListNode mergeKLists(ListNode[] lists) {
             PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(x -> x.val));
-            ListNode head = new ListNode(0);
-            ListNode tail = head;
+            ListNode dummyHead = new ListNode(0);
+            ListNode tail = dummyHead;
             for (ListNode list : lists) {
                 if (list != null) {
                     queue.offer(list);
@@ -102,7 +102,7 @@ class 合并K个升序链表 {
                     queue.offer(tail.next);
                 }
             }
-            return head.next;
+            return dummyHead.next;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

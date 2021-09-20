@@ -26,9 +26,7 @@ public class Singleton {
      * 枚举单例
      */
     public enum EnumSingleton {
-        /**
-         *
-         */
+
         INSTANCE;
 
         public EnumSingleton getInstance() {

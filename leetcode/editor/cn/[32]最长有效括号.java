@@ -42,7 +42,8 @@ package editor.cn;
 // Related Topics 字符串 动态规划 
 // 👍 1296 👎 0
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 class 最长有效括号 {
     public static void main(String[] args) {
@@ -52,7 +53,8 @@ class 最长有效括号 {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int longestValidParentheses(String s) {
-            Stack<Integer> stack = new Stack<>();
+//            Stack<Integer> stack = new Stack<>();
+            Deque<Integer> stack = new LinkedList<>();
             int res = 0;
             stack.push(-1);
             for (int i = 0; i < s.length(); i++) {

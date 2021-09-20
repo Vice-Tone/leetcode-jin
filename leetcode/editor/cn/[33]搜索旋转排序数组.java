@@ -60,7 +60,7 @@ class 搜索旋转排序数组 {
                 return -1;
             }
             if (nums.length == 1) {
-                return nums[0] == target ? nums[0] : -1;
+                return nums[0] == target ? 0 : -1;
             }
             int left = 0, right = nums.length - 1;
             while (left <= right) {
@@ -69,14 +69,16 @@ class 搜索旋转排序数组 {
                     return mid;
                 }
                 if (nums[left] <= nums[mid]) {
-                    //mid左边为升序
+                    // mid左边为升序
+                    // 5 6 7 8 9 0 1
                     if (target >= nums[left] && target <= nums[mid]) {
                         right = mid - 1;
                     } else {
                         left = mid + 1;
                     }
                 } else {
-                    //mid右边为升序
+                    // mid右边为升序
+                    // 5 6 0 1 2 3 4
                     if (target >= nums[mid] && target <= nums[right]) {
                         left = mid + 1;
                     } else {

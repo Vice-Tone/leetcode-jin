@@ -52,6 +52,13 @@ class 括号生成 {
 
         }
 
+        /**
+         *
+         * @param left 左括号个数
+         * @param right 右括号个数
+         * @param tem
+         * @param sb
+         */
         private void dfs(int left, int right, String[] tem, StringBuilder sb) {
 
             if (left > right) {

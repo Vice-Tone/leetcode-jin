@@ -76,6 +76,7 @@ class LFU缓存 {
     //leetcode submit region begin(Prohibit modification and deletion)
     class LFUCache {
 
+        // 堆顶元素为最不经常使用的元素
         private PriorityQueue<Node> queue;
         private HashMap<Integer, Node> map;
         private int cap;
@@ -95,6 +96,7 @@ class LFU缓存 {
             if (node != null) {
                 node.feq++;
                 node.time = time++;
+                // 重新调整堆
                 queue.remove(node);
                 queue.offer(node);
                 return node.value;

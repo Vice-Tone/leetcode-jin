@@ -133,10 +133,12 @@ class LRU缓存机制 {
 //        }
 //    }
 
-    //自己实现LRU
+
+    // 自己实现LRU
+
     class LRUCache {
 
-        //双向链表节点
+        // 双向链表节点
         class DLinkedNode {
             int key;
             int value;
@@ -153,14 +155,14 @@ class LRU缓存机制 {
         }
 
         private HashMap<Integer, DLinkedNode> map;
-        //        private int size;
+        // private int size;
         private int capacity;
-        //链表头部表示最近使用的
-        //尾部表示最久未使用的
+        // 链表头部表示最近使用的
+        // 尾部表示最久未使用的
         private DLinkedNode head;
         private DLinkedNode tail;
 
-        //构造方法
+        // 构造方法
         public LRUCache(int cap) {
             map = new HashMap<>();
             capacity = cap;
@@ -182,8 +184,8 @@ class LRU缓存机制 {
             }
         }
 
-        //先看存不存在，存在的话就是更新
-        //不存在的话就put进去并判断是否达到容量限制
+        //先看存不存在，存在的话就是更新，移动到head
+        //不存在的话就put进去，添加到head，并判断是否达到容量限制
         public void put(int key, int value) {
             DLinkedNode node = map.get(key);
             //存在

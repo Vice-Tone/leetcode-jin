@@ -6,31 +6,90 @@
  */
 public class Singleton {
 
-    private static volatile Singleton instance;
 
-    private Singleton() {
-    }
+    /**
+     * 饿汉式
+     */
+    static class StarveSingleton {
 
-    public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) {
-                if (instance == null) {
-                    instance = new Singleton();
-                }
-            }
+        private static final StarveSingleton instance = new StarveSingleton();
+
+        private StarveSingleton() {
         }
-        return instance;
+
+        public static StarveSingleton getInstance() {
+            return instance;
+        }
     }
 
     /**
-     * 枚举单例
+     * 懒汉式
+     */
+    static class LazySingleton {
+
+        private static LazySingleton instance;
+
+        private LazySingleton() {
+        }
+
+        public static synchronized LazySingleton getInstance() {
+            if (instance == null) {
+                instance = new LazySingleton();
+            }
+            return instance;
+        }
+    }
+
+
+    /**
+     * 双重检查
+     */
+    static class DoubleCheckSingleton {
+
+        private static volatile DoubleCheckSingleton instance;
+
+        private DoubleCheckSingleton() {
+        }
+
+        public static DoubleCheckSingleton getInstance() {
+            if (instance == null) {
+                synchronized (DoubleCheckSingleton.class) {
+                    if (instance == null) {
+                        instance = new DoubleCheckSingleton();
+                    }
+                }
+            }
+            return instance;
+        }
+    }
+
+    /**
+     * 静态内部类
+     */
+    static class InnerClassSingleton {
+
+        private InnerClassSingleton() {
+        }
+
+        private static class SingletonHolder {
+            private static final InnerClassSingleton instance = new InnerClassSingleton();
+        }
+
+        public static InnerClassSingleton getInstance() {
+            return SingletonHolder.instance;
+        }
+    }
+
+
+    /**
+     * 枚举
      */
     public enum EnumSingleton {
 
         INSTANCE;
 
-        public EnumSingleton getInstance() {
-            return INSTANCE;
+        public void doSomething() {
+            System.out.println("doSomething");
         }
     }
 

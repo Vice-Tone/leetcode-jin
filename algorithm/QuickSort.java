@@ -50,6 +50,14 @@ public class QuickSort {
         return i;
     }
 
+    /**
+     * 另一种写法
+     * @param a
+     */
+    public static void quickSort(int[] a) {
+        sort(a, 0, a.length - 1);
+    }
+
     public static void sort(int[] a, int low, int high) {
         if (low > high) {
             return;
@@ -79,12 +87,5 @@ public class QuickSort {
         sort(a, low, i - 1);
         sort(a, i + 1, high);
     }
-
-    public static void quickSort(int[] a) {
-        sort(a, 0, a.length - 1);
-    }
-
-
-
 
 }

@@ -1,7 +1,7 @@
 
 /**
  * @author ：jin
- * @description: 单例模式-双重检查
+ * @description: 单例模式
  * @date ：Created in 2021/3/5 13:29
  */
 public class Singleton {
